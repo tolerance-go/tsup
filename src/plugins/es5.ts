@@ -35,12 +35,16 @@ export const es5 = (): Plugin => {
           parser: {
             syntax: 'ecmascript',
           },
-          minify: this.options.minify ? {
-            compress: false,
-            mangle: {
-              reserved: this.options.globalName ? [this.options.globalName] : []
-            },
-          } : undefined,
+          /**
+           * 1. 目前 target 为 es 5 的时候，压缩完全交给 swc 来做
+           * 2. 关闭 reserved 的 globalName 配置，因为这么做会导致压缩的代码报错，后续找一下问题原因，好在现在 globalName 都用不到
+           */
+          // minify: this.options.minify ? {
+          //   compress: false,
+          //   // mangle: {
+          //   //   reserved: this.options.globalName ? [this.options.globalName] : []
+          //   // },
+          // } : undefined,
         },
       })
       return {
