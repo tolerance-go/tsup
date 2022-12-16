@@ -21,7 +21,7 @@
     "dev": "npm run build-fast -- --watch",
     "build": "tsup src/cli-*.ts src/index.ts src/rollup.ts --clean --splitting",
     "prepublishOnly": "npm run build",
-    "test": "npm run build && npm run test-only",
+    "test": "npm run test-only",
     "test-only": "vitest run",
     "build-fast": "npm run build -- --no-dts"
   },
